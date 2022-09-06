@@ -18,6 +18,7 @@ class Directory extends Component{
                 return (
                     <MenuItem
                         properties={section}
+                        key={section.id}
                     />
                 )
             })}

@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import './Menu-item.scss'
 const MenuItem = (props)=>{
     return(
-        <div 
-        className={`menu-item ${props.properties.size}`}>
+        <Link to={props.properties.title} 
+        className={`menu-item ${props.properties.size}`} >
                     <div 
                     className="background-image"
                     style={{backgroundImage:`url(${props.properties.imageUrl})`}}>
@@ -12,7 +13,7 @@ const MenuItem = (props)=>{
                         <h1 className="title">{props.properties.title.toUpperCase()}</h1>
                         <span className="subtitle">SHOP NOW</span>
                     </div>
-                </div>
+                </Link>
     )
 }
 export default MenuItem
