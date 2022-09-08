@@ -1,7 +1,6 @@
 import Directory from '../../Components/directory/Directory'
 import './Homepage.scss'
-const Homepage = (props)=>{
-    console.log(props)
+const Homepage = ()=>{
     return(
         <div className="homepage">
             <Directory/>
