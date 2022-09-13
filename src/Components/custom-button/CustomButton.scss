@@ -1,7 +1,7 @@
 .custom-button {
     min-width: 165px;
     width: auto;
-    height: 50px;
+    height: 48px;
     letter-spacing: 0.5px;
     line-height: 50px;
     padding: 0 25px ;
@@ -13,6 +13,8 @@
     font-weight: bolder;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
   
     &:hover {
       background-color: white;
@@ -28,6 +30,17 @@
           background-color: #357ae8;
           border: none;  
         }
+    }
+
+    &.inverted{
+      background-color: white;
+      color: black;
+
+      &:hover{
+        background-color: rgb(235, 131, 33);
+        color: #fff;
+        border: none;
+      }
     }
   }
   

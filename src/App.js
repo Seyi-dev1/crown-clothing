@@ -14,9 +14,11 @@ import { updateCurrentUser } from './redux/user/userReducer'
  const App = ()=>{
 
 
- const dispatch = useDispatch()
+ const dispatch = useDispatch() 
 
  const navigate = useNavigate()
+
+ 
 
  React.useEffect(
   ()=>{
@@ -24,17 +26,19 @@ import { updateCurrentUser } from './redux/user/userReducer'
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth)
         const snapshot = await getDoc(userRef)
+    
        dispatch(updateCurrentUser({
         id:snapshot.id,
         ...snapshot.data()
       }))
-       navigate('/')
+      return navigate('/')
       }
       else{
         dispatch(updateCurrentUser(null))
        }
     })
-   },[dispatch, navigate]
+    // eslint-disable-next-line
+   },[]
 )
 
  

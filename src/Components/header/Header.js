@@ -11,7 +11,7 @@ const Header = ()=>{
 
   const { currentUser } = useSelector((state) => state.user)
 
-  const { isVisible } = useSelector((state) => state.cartVisibility)
+  const { isVisible } = useSelector((state) => state.cart)
 
 
     return(

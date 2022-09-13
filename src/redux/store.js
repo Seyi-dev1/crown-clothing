@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import userReducer from "./user/userReducer";
-import cartVisibilityReducer from "./cart/cartVisibilityReducer";
+import cartReducer from "./cart/cartReducer";
 
 const logger = createLogger()
 
@@ -10,7 +10,7 @@ const middlewares = [logger]
 const store = configureStore({
     reducer:{
         user: userReducer,
-        cartVisibility: cartVisibilityReducer
+        cart: cartReducer
     },
     middleware:(getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck:{
