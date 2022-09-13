@@ -1,5 +1,5 @@
 import './App.css';
-import { Component } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Homepage from './Pages/homepage/Homepage';
 import Shop from './Pages/shop page/Shop';
@@ -7,44 +7,37 @@ import Header from './Components/header/Header';
 import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { getDoc } from 'firebase/firestore/lite';
+import {  useDispatch } from 'react-redux'
+import { updateCurrentUser } from './redux/user/userReducer'
 
 
- class App extends Component {
-  constructor(){
-    super()
+ const App = ()=>{
 
-    this.state={
-      currentUser:null
-    }
-  }
-  unsubscribeFromAuth = null
 
-  componentDidMount(){
-   this.unsubscribeFromAuth = auth.onAuthStateChanged(async(userAuth)=>{
-     if(userAuth){
-      const userRef = await createUserProfileDocument(userAuth)
-      const snapshot = await getDoc(userRef)
-      this.setState({
-        currentUser:{
-          id:snapshot.id,
-          ...snapshot.data()
-        }
-      })
-     }
-     else{
-      this.setState({currentUser:userAuth})
-     }
+ const dispatch = useDispatch()
+
+ React.useEffect(
+  ()=>{
+    auth.onAuthStateChanged(async (userAuth)=>{
+      if(userAuth){
+        const userRef = await createUserProfileDocument(userAuth)
+        const snapshot = await getDoc(userRef)
+       dispatch(updateCurrentUser({
+        id:snapshot.id,
+        ...snapshot.data()
+      }))
+      }
+      else{
+        dispatch(updateCurrentUser(null))
+       }
     })
-  }
+   },[dispatch]
+)
 
-  componentWillUnmount(){
-    this.unsubscribeFromAuth()
-  }
-
-  render(){
+ 
     return (
       <div>
-      <Header currentUser={this.state.currentUser}/>
+      <Header/>
       <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='shop' element={<Shop/>}/>
@@ -53,6 +46,9 @@ import { getDoc } from 'firebase/firestore/lite';
       </div>
      );
   }
-}
+ 
+  
+ 
+
 
 export default App;
