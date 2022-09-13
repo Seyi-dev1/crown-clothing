@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Homepage from './Pages/homepage/Homepage';
 import Shop from './Pages/shop page/Shop';
 import Header from './Components/header/Header';
@@ -16,6 +16,8 @@ import { updateCurrentUser } from './redux/user/userReducer'
 
  const dispatch = useDispatch()
 
+ const navigate = useNavigate()
+
  React.useEffect(
   ()=>{
     auth.onAuthStateChanged(async (userAuth)=>{
@@ -26,12 +28,13 @@ import { updateCurrentUser } from './redux/user/userReducer'
         id:snapshot.id,
         ...snapshot.data()
       }))
+       navigate('/')
       }
       else{
         dispatch(updateCurrentUser(null))
        }
     })
-   },[dispatch]
+   },[dispatch, navigate]
 )
 
  
