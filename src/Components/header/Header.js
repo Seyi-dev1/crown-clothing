@@ -5,13 +5,28 @@ import { auth } from '../../firebase/firebase.utils'
 import { useSelector } from 'react-redux'
 import CartIcon from '../cart-icon/CartIcon'
 import CartDropdown from '../cart-dropdown/CartDropdown'
+import { selectCurrentUser } from '../../redux/user/userSelectors'
+import { createSelector } from 'reselect'
+import { selectCartVisibility } from '../../redux/cart/cartSelectors'
 
 
 const Header = ()=>{
 
-  const { currentUser } = useSelector((state) => state.user)
 
-  const { isVisible } = useSelector((state) => state.cart)
+
+  const userSelector = createSelector(
+    [selectCurrentUser],
+    currentUser=>currentUser
+  )
+
+  const user = useSelector(state=>userSelector(state))
+
+  const cartVisibilitySelector = createSelector(
+    [selectCartVisibility],
+    isVisible=>isVisible
+  )
+
+  const cartVisibility = useSelector(state=>cartVisibilitySelector(state))
 
 
     return(
@@ -27,16 +42,16 @@ const Header = ()=>{
                 CONTACT
               </Link>
               {
-                currentUser?
-                <div className="option" onClick={()=>auth.signOut()}>SIGN OUT</div>
-                :
-                <Link className='option' to='signin'>
-                  SIGN IN
-                </Link>
+               user?
+    <div className="option" onClick={()=>auth.signOut()}>SIGN OUT</div>
+    :
+    <Link className='option' to='signin'>
+      SIGN IN
+    </Link>
               }
               <CartIcon/> 
             </div>
-            {isVisible && <CartDropdown/>}
+            {cartVisibility && <CartDropdown/>}
         </div>
     )
 }

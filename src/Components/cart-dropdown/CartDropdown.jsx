@@ -1,22 +1,25 @@
 import CustomButton from '../custom-button/CustomButton'
 import './CartDropdown.scss'
-import { useSelector } from 'react-redux'
 import CartItem from '../cart-item/CartItem'
+import { selectCartItems } from '../../redux/cart/cartSelectors'
+import { createSelector } from '@reduxjs/toolkit'
+import { useSelector } from 'react-redux'
 
 const CartDropdown = () =>{
 
-    const { cartItems } = useSelector((state)=>state.cart)
+    const selectAllCartItems =  createSelector(
+        [selectCartItems],
+        cartItems=> cartItems.map((cartItem)=>{
+            return <CartItem key={cartItem.id} properties={cartItem}/>
+        })
+       )
+    const allCartItems = useSelector(state=>selectAllCartItems(state))
 
-
-
+    
     return(
         <div className="cart-dropdown">
             <div className="cart-items">
-                {
-                    cartItems.map((cartItem)=>{
-                        return <CartItem key={cartItem.id} properties={cartItem}/>
-                    })
-                }
+                {allCartItems}
             </div>
             <CustomButton value='GO TO CHECK OUT'/>
         </div>

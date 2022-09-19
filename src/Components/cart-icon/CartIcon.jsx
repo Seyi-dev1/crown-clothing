@@ -6,22 +6,23 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { changeVisibility } from '../../redux/cart/cartReducer'
 
+import { cartItemsCount } from '../../redux/cart/cartSelectors'
+
+
+
+
 const CartIcon = ()=>{
 
     const dispatch = useDispatch()
-
-    const { currentUser } = useSelector((state) => state.user)
-    const { cartItems } = useSelector((state) => state.cart)
-
-
+    const totalCartItems= useSelector(state=>cartItemsCount(state) )
 
     return(
         <div className="cart-icon" onClick={()=>{
-            currentUser?dispatch(changeVisibility()):alert('Please sign in to view cart.')
+            dispatch(changeVisibility())
         } }>
             <img src={shoppingBag} alt="shopping Icon" 
             className='shopping-icon'/>
-            <span className='item-count'>{cartItems.length}</span>
+            <span className='item-count'>{totalCartItems}</span>
         </div>
     )
 }
