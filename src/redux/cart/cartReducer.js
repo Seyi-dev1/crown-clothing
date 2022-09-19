@@ -31,11 +31,38 @@ const cartSlice = createSlice({
 
         addToCart:(state, action)=>{
            state.cartItems= addItemToCart(state.cartItems, action.payload)
+        },
+
+        removeFromCart:(state, action)=>{
+            state.cartItems= state.cartItems.filter((cartItem)=>{
+                return cartItem.id !== action.payload
+            })
+        },
+
+        increaseCartItemQuantity:(state, action)=>{
+            state.cartItems= state.cartItems.map((cartItem)=>{
+              return  cartItem.id === action.payload?
+              {...cartItem, quantity:cartItem.quantity + 1}
+              :cartItem
+            })
+        },
+
+        decreaseCartItemQuantity:(state, action)=>{
+            state.cartItems = state.cartItems.map((cartItem)=>{
+            return cartItem.id === action.payload?
+            {...cartItem, quantity:cartItem.quantity - 1}
+            : cartItem    
+            })
         }
     }
 
 })
 
-export const { changeVisibility, addToCart } = cartSlice.actions
+export const { 
+    changeVisibility,
+     addToCart,
+     removeFromCart,
+     decreaseCartItemQuantity,
+     increaseCartItemQuantity } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -9,18 +9,18 @@ const CheckOutPage = ()=>{
 
     const selectallCartItems = createSelector(
         [selectCartItems],
-        cartItems=>cartItems.map((cartItem)=>{
+        cartItems=>cartItems.length > 0? cartItems.map((cartItem)=>{
             return <CheckOutItem key={cartItem.id} properties={cartItem}/>
-        })
+        }): <h2>Your cart is empty</h2>
     )
 
     const selectAllPrices = createSelector(
         [selectCartItems],
         cartItems=>cartItems.map((cartItem)=>{
-            return cartItem.price
+            return cartItem.price * cartItem.quantity
         }).reduce((index, value)=>{ 
             return index + value
-        })
+        },0)
     )
 
     const allCartItems = useSelector(state=>selectallCartItems(state))
