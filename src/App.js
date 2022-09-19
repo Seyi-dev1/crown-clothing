@@ -9,6 +9,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { getDoc } from 'firebase/firestore/lite';
 import {  useDispatch } from 'react-redux'
 import { updateCurrentUser } from './redux/user/userReducer'
+import CheckOutPage from './Pages/checkout/checkOut';
 
 
  const App = ()=>{
@@ -49,6 +50,7 @@ import { updateCurrentUser } from './redux/user/userReducer'
       <Route path='/' element={<Homepage/>}/>
       <Route path='shop' element={<Shop/>}/>
       <Route path='signin' element={<SignInAndSignUpPage/>}/>
+      <Route path='checkout' element={<CheckOutPage/>}/>
       </Routes>
       </div>
      );
