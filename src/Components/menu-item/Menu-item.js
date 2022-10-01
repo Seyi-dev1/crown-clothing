@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import './Menu-item.scss'
 const MenuItem = (props)=>{
     return(
-        <Link to={props.properties.title} 
+        <Link to={props.properties.linkUrl} 
         className={`menu-item ${props.properties.size}`} >
                     <div 
                     className="background-image"

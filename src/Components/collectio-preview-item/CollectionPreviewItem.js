@@ -16,7 +16,7 @@ const CollectionPreviewItem = (props)=>{
             </div>
             <div className="collection-footer">
                 <span className="name">{props.properties.name}</span>
-                <span className="price">{props.properties.price}</span>
+                <span className="price">₦{props.properties.price}</span>
             </div>
             <CustomButton 
             value='ADD TO CART'

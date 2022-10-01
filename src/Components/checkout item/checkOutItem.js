@@ -5,8 +5,10 @@ import {
      increaseCartItemQuantity,
      decreaseCartItemQuantity } from '../../redux/cart/cartReducer'
 
+import React from 'react'
 
-const CheckOutItem = (props)=>{
+
+let CheckOutItem = (props)=>{
 
     const dispatch = useDispatch()
 
@@ -38,5 +40,7 @@ const CheckOutItem = (props)=>{
 )
     
 }
+
+CheckOutItem = React.memo(CheckOutItem)
 
 export default CheckOutItem

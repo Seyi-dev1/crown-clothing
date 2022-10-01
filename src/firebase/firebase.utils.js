@@ -4,6 +4,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyDnT1cdlnojUDRW2iOKsQPUnN-UxZWhEBw",
     authDomain: "crown-db01.firebaseapp.com",
@@ -47,7 +48,9 @@ export const db = getFirestore(app);
 export const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
-export const googleHandler =  () => signInWithPopup(auth, provider)
+export const googleHandler =  () => {
+     signInWithPopup(auth, provider)
+}
 
   
 

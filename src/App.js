@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Homepage from './Pages/homepage/Homepage';
 import Shop from './Pages/shop page/Shop';
 import Header from './Components/header/Header';
@@ -10,29 +10,27 @@ import { getDoc } from 'firebase/firestore/lite';
 import {  useDispatch } from 'react-redux'
 import { updateCurrentUser } from './redux/user/userReducer'
 import CheckOutPage from './Pages/checkout/checkOut';
+import CollectionPage from './Pages/category/Category';
+
 
 
  const App = ()=>{
 
-
- const dispatch = useDispatch() 
-
- const navigate = useNavigate()
-
+const dispatch = useDispatch()
  
 
  React.useEffect(
   ()=>{
-    auth.onAuthStateChanged(async (userAuth)=>{
+      auth.onAuthStateChanged(async (userAuth)=>{
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth)
         const snapshot = await getDoc(userRef)
     
-       dispatch(updateCurrentUser({
+      dispatch(updateCurrentUser({
         id:snapshot.id,
         ...snapshot.data()
       }))
-      return navigate('/')
+      
       }
       else{
         dispatch(updateCurrentUser(null))
@@ -49,6 +47,7 @@ import CheckOutPage from './Pages/checkout/checkOut';
       <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='shop' element={<Shop/>}/>
+      <Route path='shop/:shopId' element={<CollectionPage/>}/>
       <Route path='signin' element={<SignInAndSignUpPage/>}/>
       <Route path='checkout' element={<CheckOutPage/>}/>
       </Routes>
