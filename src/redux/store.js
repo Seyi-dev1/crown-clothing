@@ -11,7 +11,11 @@ import paymentReducer from "./payment/paymentReducer";
 
 const logger = createLogger()
 
-const middlewares = [logger]
+const middlewares = []
+
+if(process.env.NODE_ENV === 'development') {
+    middlewares.push(logger)
+}
 
 const combinedReducers = combineReducers({
     user: userReducer,
