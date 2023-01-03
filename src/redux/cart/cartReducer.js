@@ -53,6 +53,9 @@ const cartSlice = createSlice({
             {...cartItem, quantity:cartItem.quantity - 1}
             : cartItem    
             })
+        },
+        clearCart:(state)=>{
+            state.cartItems = []
         }
     }
 
@@ -63,6 +66,8 @@ export const {
      addToCart,
      removeFromCart,
      decreaseCartItemQuantity,
-     increaseCartItemQuantity } = cartSlice.actions
+     increaseCartItemQuantity,
+     clearCart 
+    } = cartSlice.actions
 
 export default cartSlice.reducer

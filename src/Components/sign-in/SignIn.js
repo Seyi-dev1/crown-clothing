@@ -1,10 +1,13 @@
 import React from 'react';
 import CustomButton from '../custom-button/CustomButton';
 import FormInput from '../form-input/FormInput';
-import {  auth, provider }  from '../../firebase/firebase.utils';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import './SignIn.scss'
+import { googleSignInStart, emailSignInStart } from '../../redux/user/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../redux/user/userSelectors'
+import { createSelector } from 'reselect'
 import { useNavigate } from 'react-router-dom';
+
 
 
 const SignIn = () => {
@@ -13,31 +16,36 @@ const SignIn = () => {
         email:'',
         password:''
     })
+    const userSelector = createSelector(
+        [selectCurrentUser],
+        currentUser=>currentUser
+      )
+    
+      const user = useSelector(state=>userSelector(state))
+    
 
+    const dispatch = useDispatch()
     const navigate = useNavigate()
    
+    React.useEffect(
+        ()=>{
+            user && navigate(-1)
+        }, [user, navigate]
+    )
 
-  const handleSubmit = async (event)=>{
+  const handleSubmit = (event)=>{
         event.preventDefault()
-        const{ email, password } = inputs
-
-        try {
-            await signInWithEmailAndPassword(auth, email, password)
-            setInputs({email:'', password:''})
-            navigate(-1)
-        } catch (error) {
-            console.log(error)
-        }
+       dispatch(emailSignInStart(inputs))
     }
     
-   const handleSubmit2 = async ()=>{
-        try {
-            await signInWithPopup(auth, provider)
-            navigate(-1)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+//    const handleSubmit2 = async ()=>{
+//         try {
+//             await signInWithPopup(auth, provider)
+//             navigate(-1)
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     }
 
   const  handleChange = (event)=>{
         const { name, value } = event.target
@@ -58,7 +66,7 @@ const SignIn = () => {
                     value={inputs.password} handleChange={handleChange} required={true}/>
                     <div className='buttons'>
                     <CustomButton type='submit' value='SIGN IN'/>
-                    <CustomButton type='button' value='SIGN IN WITH GOOGLE' onclick={handleSubmit2}
+                    <CustomButton type='button' value='SIGN IN WITH GOOGLE' onclick={()=>dispatch(googleSignInStart())}
                         isGoogleSignIn={true}
                     />
                     </div>

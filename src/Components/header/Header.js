@@ -1,18 +1,18 @@
 import './Header.scss'
 import crown from '../../assets/084 crown.svg'
 import { Link } from 'react-router-dom'
-import { auth } from '../../firebase/firebase.utils'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import CartIcon from '../cart-icon/CartIcon'
 import CartDropdown from '../cart-dropdown/CartDropdown'
 import { selectCurrentUser } from '../../redux/user/userSelectors'
 import { createSelector } from 'reselect'
+import { startSignOut } from '../../redux/user/userReducer'
 import { selectCartVisibility } from '../../redux/cart/cartSelectors'
 
 
 const Header = ()=>{
 
-
+  const dispatch = useDispatch()
 
   const userSelector = createSelector(
     [selectCurrentUser],
@@ -43,7 +43,7 @@ const Header = ()=>{
               </Link>
               {
                user?
-    <div className="option" onClick={()=>auth.signOut()}>SIGN OUT</div>
+    <div className="option" onClick={()=>dispatch(startSignOut())}>SIGN OUT</div>
     :
     <Link className='option' to='signin'>
       SIGN IN

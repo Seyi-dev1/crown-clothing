@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore/lite';
+import { getFirestore, doc, getDoc, setDoc, writeBatch } from 'firebase/firestore/lite';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+
 
 
 
@@ -14,7 +15,7 @@ const firebaseConfig = {
     appId: "1:463593086856:web:94bcf7b3331cc6e437643d"
 };
 
-export const createUserProfileDocument = async (userAuth, additionalData)=>{
+export const createUserProfileDocument = async (userAuth, name, additionalData)=>{
     if(!userAuth) return
 
    const userRef = doc(db,`/users/${userAuth.uid}`)
@@ -22,15 +23,16 @@ export const createUserProfileDocument = async (userAuth, additionalData)=>{
    const snapShot = await getDoc(userRef)
 
    if(!snapShot.exists()) {
-    const{ displayName, email } = userAuth
+    const{  displayName, email } = userAuth
     const createdAt = new Date()
    
 
    try{
     await setDoc(userRef,{
-        displayName: displayName,
-        email:email,
-        createdAt:createdAt,
+        displayName,
+        name,
+        email,
+        createdAt,
         ...additionalData
     })
    } catch(error){
@@ -39,6 +41,15 @@ export const createUserProfileDocument = async (userAuth, additionalData)=>{
 }
 
 return userRef
+}
+ 
+export const getCurrentUser = async () => {
+   return new Promise((resolve, reject)=>{
+    const unsubcribe = auth.onAuthStateChanged(userAuth => {
+        unsubcribe()
+        resolve(userAuth)
+    }, reject)
+   })
 }
 
 const app = initializeApp(firebaseConfig);
@@ -51,6 +62,24 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const googleHandler =  () => {
      signInWithPopup(auth, provider)
 }
+
+const batch = writeBatch(db)
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+
+   await objectsToAdd.forEach((obj)=>{
+       const newDocRef = doc(db,`/${collectionKey}/${obj.title}`)
+       batch.set(newDocRef, {...obj})
+    })
+
+  return await  batch.commit()
+}
+
+export const convertCollectionsArrayToObject = (collections)=>{
+     
+}
+
+
 
   
 

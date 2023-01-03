@@ -8,10 +8,15 @@ import shopCollectionsReducer from "./shop-collections/shopCollectionsReducer";
 import { FLUSH, PERSIST, persistReducer, persistStore, PURGE, REHYDRATE, REGISTER, PAUSE } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import paymentReducer from "./payment/paymentReducer";
+import createSagaMiddleware from "@redux-saga/core";
+import rootSaga from "../sagas/rootSaga";
 
 const logger = createLogger()
 
-const middlewares = []
+const saga = createSagaMiddleware()
+
+
+const middlewares = [saga]
 
 if(process.env.NODE_ENV === 'development') {
     middlewares.push(logger)
@@ -39,11 +44,13 @@ const store = configureStore({
     middleware:(getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck:{
             ignoredActions:[FLUSH, REHYDRATE, PAUSE, REGISTER, PERSIST, PURGE],
-            ignoredActionPaths:['payload.createdAt'],
-            ignoredPaths:['user.currentUser.createdAt']
+            ignoredActionPaths:['payload.createdAt','payload'],
+            ignoredPaths:['user.currentUser.createdAt', 'firebase', 'firestore', 'payload']
         }
     }).concat(middlewares)
 })
+
+ saga.run(rootSaga)
 
 export const persistor = persistStore(store)
 
