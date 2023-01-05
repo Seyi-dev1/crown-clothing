@@ -60,14 +60,37 @@ const SignIn = () => {
                 <h2>I already have an acount</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={handleSubmit}>
-                    <FormInput id={'email'} type={"email"} name={'email'} label={'Email'}
-                    value={inputs.email} handleChange={handleChange} required={true}/>
-                     <FormInput id={'password'} type={"password"} name={'password'} label={'Password'}
-                    value={inputs.password} handleChange={handleChange} required={true}/>
+                    <FormInput 
+                     id={'email'}
+                     type={"email"}
+                     name={'email'}
+                     label={'Email'}
+                     value={inputs.email}
+                     handleChange={handleChange} 
+                     required={true}/>
+
+                    <FormInput 
+                      id={'password'} 
+                      type={"password"} 
+                      name={'password'} 
+                      label={'Password'}
+                      value={inputs.password} 
+                      handleChange={handleChange} 
+                      required={true}
+                      />
+
                     <div className='buttons'>
-                    <CustomButton type='submit' value='SIGN IN'/>
-                    <CustomButton type='button' value='SIGN IN WITH GOOGLE' onclick={()=>dispatch(googleSignInStart())}
-                        isGoogleSignIn={true}
+                    
+                    <CustomButton 
+                     type='submit' 
+                     value='SIGN IN'
+                     />
+
+                    <CustomButton 
+                      type='button' 
+                      value='SIGN IN WITH GOOGLE' 
+                      onclick={()=>dispatch(googleSignInStart())}
+                      isGoogleSignIn={true}
                     />
                     </div>
                 </form>

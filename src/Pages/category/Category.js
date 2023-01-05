@@ -24,11 +24,11 @@ const CollectionPage = ()=>{
 
     React.useEffect(
         () => {
-            collection === undefined && dispatch(fetchCollections())
-        }, [dispatch, collection]
+             dispatch(fetchCollections())
+        }, [ dispatch]
     )
 
-    return( collection !== undefined?
+    return( collection !== {}?
         <div className="collection-page">
          <h2 key={collection.id} className='title'>
         {collection.title}

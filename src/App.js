@@ -8,9 +8,7 @@ import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up
 import CheckOutPage from './Pages/checkout/checkOut';
 import CollectionPage from './Pages/category/Category';
 import { useDispatch } from 'react-redux';
-import { getDoc } from 'firebase/firestore/lite';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import { emailSignInSuccess } from './redux/user/userReducer';
+import { checkUserSession } from './redux/user/userReducer';
 
  const App = ()=>{
 
@@ -21,27 +19,9 @@ const dispatch = useDispatch()
 
  React.useEffect(
   ()=>{
-      auth.onAuthStateChanged(async (userAuth)=>{
-      if(userAuth){
-        const userRef = await createUserProfileDocument(userAuth)
-        const snapshot = await getDoc(userRef)
-    
-      dispatch(emailSignInSuccess({
-        id:snapshot.id,
-        ...snapshot.data()
-      }))
-      
-      }
-
-      // else{
-      //   dispatch(emailSignInSuccess(null))
-      //   // addCollectionAndDocuments('collections', collections)
-      // }
-       
-    })
-    // eslint-disable-next-line
-   },[]
-) 
+    dispatch(checkUserSession())
+  },[dispatch]
+ )
 
  
     return (

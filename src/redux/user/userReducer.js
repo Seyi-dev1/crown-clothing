@@ -11,11 +11,11 @@ const userSlice = createSlice({
         googleSignInStart: (state) =>{
             state.isSigningIn = true
         },
-        googleSignInSuccess: (state, action) =>{
+        SignInSuccess: (state, action) =>{
             state.isSigningIn = false
             state.currentUser = action.payload
         },
-        googleSignInFailure: (state, action) =>{
+        SignInFailure: (state, action) =>{
             state.isSigningIn = false
             console.log(action.payload)
 
@@ -23,19 +23,11 @@ const userSlice = createSlice({
         emailSignInStart: (state, action) =>{
             state.isSigningIn = true
         },
-        emailSignInSuccess: (state, action) =>{
-            state.isSigningIn = false
-            state.currentUser = action.payload
-        },
-        emailSignInFailure: (state, action) =>{
-            state.isSigningIn = false
-            console.log(action.payload)
-        },
         signUpStart: () =>{
 
         },
         signUpSuccess:(state, action) =>{
-            state.currentUser = action.payload
+
         },
         signUpFailure:(state, action) =>{
             console.log(action.payload)
@@ -48,22 +40,24 @@ const userSlice = createSlice({
         },
         signOutFailure:(state, action)=>{
             console.log(action.payload)
+        },
+        checkUserSession:(state, action) => {
+
         }
     }
 })
 
 export const { googleSignInStart,
-               googleSignInSuccess,
-               googleSignInFailure,
                emailSignInStart,
-               emailSignInSuccess,
-               emailSignInFailure,
+               SignInSuccess,
+               SignInFailure,
                signUpStart,
                signUpSuccess,
                signUpFailure,
                startSignOut,
                signOutSuccess,
-               signOutFailure 
+               signOutFailure ,
+               checkUserSession
  } = userSlice.actions
 
 export default userSlice.reducer
