@@ -6,6 +6,10 @@
     align-items: center;
     margin: 50px auto 0;
 
+    @media screen and (max-width: 800px){
+      width: 90%;
+   }
+
     .pay-now{
       color: #fff;
       background: rgb(17, 168, 228);
@@ -25,6 +29,13 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid darkgrey;
+
+      @media screen and (max-width: 800px){
+       display: grid;
+       grid-template-columns: repeat(5,1fr);
+       gap: 15px;
+
+     }
   
       .header-block {
         text-transform: capitalize;
@@ -32,6 +43,11 @@
   
         &:last-child {
           width: 8%;
+
+          @media screen and (max-width: 800px){
+            width: 2%;
+
+         }
         }
       }
     }

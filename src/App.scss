@@ -2,7 +2,11 @@
 body{
     font-family: 'Roboto Condensed', sans-serif;
     padding: 20px 60px;
-    font-size: 19px;
+    font-size: 17px;
+
+    @media screen and (max-width: 800px){
+        padding: 10px;
+    }
 }
 a{
  text-decoration:none ;

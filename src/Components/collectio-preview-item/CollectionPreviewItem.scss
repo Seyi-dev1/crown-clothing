@@ -5,6 +5,21 @@
     height: 350px;
     align-items: center;
     position: relative;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 800px){
+      width: 40vw;
+
+      &:hover {
+        .image{
+          filter: unset;
+        }
+        .custom-button{
+          opacity: unset;
+        }
+      }
+      
+  }
   
     .image {
       width: 100%;
@@ -16,10 +31,18 @@
 
     .custom-button{
       position: absolute;
-      width: 70%;
+      width: 80%;
       top: 255px;
       opacity: 0.8;
       display: none;
+
+      @media screen and (max-width: 800px){
+        display: block;
+        opacity: 0.9;
+        min-width: unset;
+        padding: 0 10px;
+        font-size: 12px;
+    }
 
       &:hover{
         opacity: 1;
@@ -41,14 +64,25 @@
       display: flex;
       justify-content: space-between;
       font-size: 20px;
+
+      @media screen and (max-width: 800px){
+        width: 100%;
+        font-size: 15px;
+     }
   
       .name {
         width: 90%;
         margin-bottom: 15px;
+        @media screen and (max-width: 800px){
+          width: 70%;
+       }
       }
   
       .price {
         width: 10%;
+        @media screen and (max-width: 800px){
+          width: 30%;
+       }
       }
     }
   }

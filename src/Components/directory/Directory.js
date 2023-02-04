@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectSections } from "../../redux/directory/directorySelectors";
 import './directory.scss'
 const Directory = ()=> {
-
+   
     const selectAllSections = createSelector(
         [selectSections],
         sections=>sections.map((section)=>{
@@ -19,6 +19,7 @@ const Directory = ()=> {
     )
 
     const allSections = useSelector((state)=> selectAllSections(state))
+
    
         return(
             <div className="directory-menu">

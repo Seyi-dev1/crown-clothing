@@ -3,7 +3,7 @@ import CollecttionsOverview from '../../Components/collections-overview/collecti
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import WithSpinner from '../../Components/with spinner/with-spinner'
-import { selectIsLoading } from '../../redux/shop-collections/shopCollectionsSelectors'
+import { selectIsCollectionsLoaded } from '../../redux/shop-collections/shopCollectionsSelectors'
 import { fetchCollections } from '../../redux/shop-collections/shopCollectionsReducer'
 
 const Shop = ()=>{
@@ -11,7 +11,7 @@ const Shop = ()=>{
 
     const dispatch = useDispatch()
 
-    const isLoading = useSelector((state)=>selectIsLoading(state))
+    const isLoading = useSelector((state)=>selectIsCollectionsLoaded(state))
 
     React.useEffect(
         ()=>{
@@ -22,7 +22,7 @@ const Shop = ()=>{
     
         return(
             <div className="shop-page">
-            {isLoading?<WithSpinner/>:<CollecttionsOverview/>}
+            {isLoading?<CollecttionsOverview/>:<WithSpinner/>}
             </div>
         )
     

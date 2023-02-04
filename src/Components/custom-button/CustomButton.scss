@@ -15,6 +15,12 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 800px){
+      min-width: 100px;
+      font-size: 13px;
+      padding: 0 10px;
+  }
   
     &:hover {
       background-color: white;

@@ -8,7 +8,7 @@ import {
 import React from 'react'
 
 
-let CheckOutItem = (props)=>{
+const CheckOutItem = (props)=>{
 
     const dispatch = useDispatch()
 
@@ -29,7 +29,7 @@ let CheckOutItem = (props)=>{
     <div className="arrow"
     onClick={()=>{dispatch(increaseCartItemQuantity(props.properties.id))}}>&#10095;</div>
     </span>
-    <span className='price'>{props.properties.price}</span>
+    <span className='price'>₦{props.properties.price}</span>
     <div 
     className="remove-button"
     onClick={()=>{dispatch(removeFromCart(props.properties.id))}}
@@ -38,9 +38,9 @@ let CheckOutItem = (props)=>{
     </div>
 </div>
 )
+
     
 }
 
-CheckOutItem = React.memo(CheckOutItem)
 
-export default CheckOutItem
+export default React.memo(CheckOutItem)

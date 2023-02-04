@@ -88,7 +88,7 @@ const SignIn = () => {
 
                     <CustomButton 
                       type='button' 
-                      value='SIGN IN WITH GOOGLE' 
+                      value='WITH GOOGLE' 
                       onclick={()=>dispatch(googleSignInStart())}
                       isGoogleSignIn={true}
                     />

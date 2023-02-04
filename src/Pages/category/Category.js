@@ -15,6 +15,8 @@ const CollectionPage = ()=>{
 
     const dispatch = useDispatch()
 
+    
+
     const selectCollection = createSelector(
         [selectCollections],
         collections=>collections[shopId]
@@ -24,11 +26,11 @@ const CollectionPage = ()=>{
 
     React.useEffect(
         () => {
-             dispatch(fetchCollections())
-        }, [ dispatch]
+            dispatch(fetchCollections())
+        }, [dispatch]
     )
 
-    return( collection !== {}?
+    return( collection?
         <div className="collection-page">
          <h2 key={collection.id} className='title'>
         {collection.title}
@@ -39,7 +41,8 @@ const CollectionPage = ()=>{
             })}
         </div>
         </div>:
-        <WithSpinner/>
+         <WithSpinner/>
+
        
     )
 }
