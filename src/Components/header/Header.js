@@ -40,7 +40,7 @@ const Header = () => {
     <div className="header">
       <Link className="logo-container" to="/">
         <img src={crown2} alt="crown" />
-        <h2>Crown Clothing</h2>
+        <h2>Regal</h2>
       </Link>
       <div className="links">
         <div className="logo">

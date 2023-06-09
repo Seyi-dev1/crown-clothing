@@ -37,11 +37,11 @@
     }
 
     h2 {
-      align-self: flex-end;
-      font-weight: 500;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      display: none;
+      align-self: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      // text-transform: uppercase;
+      // display: none;
     }
 
     @media screen and (max-width: 800px) {
@@ -126,7 +126,7 @@
 
     .modalContent {
       background-color: #ffffff;
-      width: 60%;
+      width: 80%;
       height: 100vh;
       justify-content: center;
       position: relative;
