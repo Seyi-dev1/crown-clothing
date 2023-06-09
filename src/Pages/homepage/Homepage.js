@@ -1,11 +1,12 @@
-import Directory from '../../Components/directory/Directory'
-import { HomePageContainer } from './Homepage.styles'
-const Homepage = ()=>{
-    return(
-        <HomePageContainer>
-            <Directory/>
-            </HomePageContainer>
-        
-    )
-}
-export default Homepage
+import Directory from "../../Components/directory/Directory";
+import Footer from "../../Components/footer/Footer";
+
+const Homepage = () => {
+  return (
+    <div>
+      <Directory />
+      <Footer />
+    </div>
+  );
+};
+export default Homepage;

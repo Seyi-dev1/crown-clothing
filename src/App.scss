@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Inter:wght@500&family=Karla&family=Montserrat:wght@500&family=Open+Sans&family=Pacifico&family=Roboto+Condensed:wght@300&family=Sacramento&display=swap');
-body{
-    font-family: 'Roboto Condensed', sans-serif;
-    padding: 20px 60px;
-    font-size: 17px;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  font-family: "Montserrat", sans-serif;
+  padding: 0px 0px;
+  font-size: 17px;
+  font-weight: 400;
 
-    @media screen and (max-width: 800px){
-        padding: 10px;
-    }
+  @media screen and (max-width: 800px) {
+    // padding: 10px;
+  }
 }
-a{
- text-decoration:none ;
- color: black;
+a {
+  text-decoration: none;
+  color: black;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }

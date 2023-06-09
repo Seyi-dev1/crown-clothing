@@ -1,12 +1,15 @@
 .directory-menu {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    justify-content: space-between;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  justify-content: space-between;
+  // padding-top: 2rem;
 
-    @media screen and (max-width: 800px){
-      margin-top: 3.5rem;
-      }
+  @media screen and (max-width: 450px) {
+    // margin-top: 3.5rem;
+    // grid-template-columns: 1fr;
+    // padding: 20px;
+    grid-template-columns: 1fr;
   }
-  
+}
