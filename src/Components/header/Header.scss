@@ -32,7 +32,7 @@
 
     img {
       @media screen and (max-width: 1050px) {
-        width: 30px;
+        width: 35px;
       }
     }
 
@@ -106,11 +106,13 @@
 
       @media screen and (max-width: 800px) {
         text-transform: lowercase;
-        font-size: 14px;
+        font-size: 16px;
+        // font-weight: 600;
       }
     }
     .menu {
       margin-left: 15px;
+      font-size: 1.5rem;
     }
   }
   .modal {

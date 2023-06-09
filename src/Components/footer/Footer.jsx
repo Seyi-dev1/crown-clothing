@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.second}>
-        <h1 className={styles.logo}>CROWN CLOTHING</h1>
+        <h1 className={styles.logo}>REGAL CLOTHING</h1>
         <p className={styles.location}>NIGERIA</p>
         <div className={styles.line1}>
           <span>About Us</span>
