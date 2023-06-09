@@ -8,9 +8,18 @@ import { selectCurrentUser } from "../../redux/user/userSelectors";
 import { createSelector } from "reselect";
 import { startSignOut } from "../../redux/user/userReducer";
 import { selectCartVisibility } from "../../redux/cart/cartSelectors";
+import { BiMenu } from "react-icons/bi";
+import { RxCross1 } from "react-icons/rx";
+import React from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  const [isMenu, setIsMenu] = React.useState(false);
+
+  const menuToggle = () => {
+    setIsMenu((prev) => !prev);
+  };
 
   const userSelector = createSelector(
     [selectCurrentUser],
@@ -39,17 +48,11 @@ const Header = () => {
         <div className="categories">
           <p>Women</p>
           <p>Men</p>
-          <p>Kids</p>
-          <p>Babies</p>
+          <p>Hats</p>
+          <p>Sneakers</p>
         </div>
       </div>
       <div className="options">
-        {/* <Link className="option" to="shop">
-          SHOP
-        </Link>
-        <Link className="option" to="shop">
-          CONTACT
-        </Link> */}
         {user ? (
           <div className="option" onClick={() => dispatch(startSignOut())}>
             SIGN OUT
@@ -60,8 +63,35 @@ const Header = () => {
           </Link>
         )}
         <CartIcon />
+        <BiMenu onClick={menuToggle} className="menu" />
       </div>
       {cartVisibility && <CartDropdown />}
+      {isMenu && (
+        <div className="modal">
+          <div className="modalContent">
+            <div className="modalLogo">
+              <img src={crown} alt="crown" />
+              <h1>Crown Clothing.</h1>
+            </div>
+            <RxCross1 onClick={menuToggle} className="menu" />
+            <Link onClick={menuToggle} to="/">
+              <h2>Home</h2>
+            </Link>
+            <Link onClick={menuToggle} to="/shop/womens">
+              <h2>Womens</h2>
+            </Link>
+            <Link onClick={menuToggle} to="/shop/mens">
+              <h2>Mens</h2>
+            </Link>
+            <Link onClick={menuToggle} to="/shop/hats">
+              <h2>Hats</h2>
+            </Link>
+            <Link onClick={menuToggle} to="/shop/sneakers">
+              <h2>Sneakers</h2>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

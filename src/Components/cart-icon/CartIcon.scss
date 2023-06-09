@@ -10,6 +10,9 @@
   .shopping-icon {
     font-size: 1.7rem;
     color: rgb(69, 68, 68);
+    @media screen and (max-width: 1050px) {
+      font-size: 1.3rem;
+    }
   }
 
   .item-count {
@@ -17,15 +20,21 @@
     font-size: 12px;
     font-weight: bold;
     top: 0px;
+    right: -5px;
     display: grid;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
     color: black;
-    // padding: 5px;
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    right: -10px;
+    @media screen and (max-width: 1050px) {
+      height: 15px;
+      width: 15px;
+      font-size: 10px;
+      right: 2px;
+      top: 5px;
+    }
   }
 }
