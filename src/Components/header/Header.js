@@ -1,5 +1,5 @@
 import "./Header.scss";
-// import crown from "../../assets/084 crown.svg";
+import crown from "../../assets/084 crown.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CartIcon from "../cart-icon/CartIcon";
@@ -11,7 +11,7 @@ import { selectCartVisibility } from "../../redux/cart/cartSelectors";
 import { BiMenu } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
 import React from "react";
-import crown2 from "../../assets/crown/icons8-crown-40.png";
+// import crown2 from "../../assets/crown/icons8-crown-40.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        <img src={crown2} alt="crown" />
+        <img src={crown} alt="crown" />
         <h2>Regal</h2>
       </Link>
       <div className="links">
@@ -71,7 +71,7 @@ const Header = () => {
         <div className="modal">
           <div className="modalContent">
             <div className="modalLogo">
-              <img src={crown2} alt="crown" />
+              <img src={crown} alt="crown" />
               <h1>Regal Clothing.</h1>
             </div>
             <RxCross1 onClick={menuToggle} className="menu" />

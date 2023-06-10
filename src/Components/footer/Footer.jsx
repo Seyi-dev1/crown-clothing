@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import React from "react";
+import crown from "../../assets/084 crown.svg";
 
 const Footer = () => {
   return (
@@ -22,6 +23,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.second}>
+        <img className={styles.logoImage} src={crown} alt="crown" />
         <h1 className={styles.logo}>REGAL CLOTHING</h1>
         <p className={styles.location}>NIGERIA</p>
         <div className={styles.line1}>

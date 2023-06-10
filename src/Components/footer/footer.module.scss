@@ -52,11 +52,20 @@
       cursor: pointer;
     }
 
+    .logoImage {
+      justify-self: center;
+      margin-top: 6rem;
+
+      @media screen and (max-width: 1050px) {
+        width: 35px;
+      }
+    }
+
     .logo {
       font-size: 1.8rem;
       width: fit-content;
+      margin-top: 1rem;
       justify-self: center;
-      margin-top: 6rem;
       font-weight: 600;
       letter-spacing: 2px;
       border-bottom: 3px solid rgb(199, 193, 193);
@@ -72,7 +81,7 @@
       margin-top: 10px;
 
       @media screen and (max-width: 1050px) {
-        font-size: 15px;
+        font-size: 13px;
       }
     }
     .line1 {
