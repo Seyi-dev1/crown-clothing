@@ -16,12 +16,6 @@
     padding: 0rem;
   }
 
-  // @media screen and (max-width: 800px) {
-  //   padding: 10px;
-  //   // height: 60px;
-  //   // margin-bottom: 20px;
-  // }
-
   .logo-container {
     height: 100%;
     width: fit-content;
@@ -41,7 +35,7 @@
       font-weight: 600;
       font-size: 1.1rem;
       // text-transform: uppercase;
-      // display: none;
+      display: none;
     }
 
     @media screen and (max-width: 800px) {
