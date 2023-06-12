@@ -15,7 +15,7 @@
     justify-self: center;
     margin-top: 1rem;
     border-radius: 5px;
-    width: 23rem;
+    width: 18rem;
     font-family: "Montserrat", sans-serif;
 
     @media screen and (max-width: 1100px) {
@@ -74,8 +74,8 @@
       justify-content: center;
 
       input {
-        width: 20rem;
-        padding: 12px;
+        width: 16rem;
+        padding: 10px;
         border-radius: 6px;
         border: none;
         outline: none;
@@ -89,12 +89,14 @@
         }
       }
       label {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 2px;
       }
 
       .money {
         text-align: center;
+        font-size: 13px;
+        font-weight: 500;
       }
 
       .paystack {
@@ -106,9 +108,8 @@
         border: none;
         outline: none;
         cursor: pointer;
-        font-family: "Montserrat", sans-serif;
-        font-weight: bold;
-        letter-spacing: 2px;
+        font-family: inherit;
+        font-weight: 500;
         justify-self: center;
         margin-top: 20px;
       }

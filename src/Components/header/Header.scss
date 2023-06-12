@@ -13,18 +13,18 @@
   @media screen and (max-width: 1050px) {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: 0;
-    padding: 0rem;
+    padding: 0 1rem;
   }
 
   .logo-container {
     height: 100%;
     width: fit-content;
-    padding: 25px;
     display: flex;
     align-items: center;
     gap: 5px;
 
     img {
+      width: 2.5rem;
       @media screen and (max-width: 1050px) {
         width: 35px;
       }
@@ -33,7 +33,7 @@
     h2 {
       align-self: center;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       // text-transform: uppercase;
       display: none;
     }
@@ -55,8 +55,9 @@
       display: none;
     }
     h2 {
-      margin-top: 40px;
+      margin-top: 20px;
       letter-spacing: 5px;
+      font-size: 1.3rem;
       @media screen and (max-width: 1050px) {
         margin-top: 0;
         letter-spacing: 2px;
@@ -68,8 +69,9 @@
       display: flex;
       gap: 20px;
       justify-self: center;
-      margin-top: 15px;
+      margin-top: 5px;
       color: rgb(110, 109, 109);
+      font-size: 13px;
 
       @media screen and (max-width: 1050px) {
         display: none;
@@ -97,16 +99,18 @@
       // padding: 10px 15px;
       cursor: pointer;
       color: rgb(69, 68, 68);
+      font-size: 14px;
 
       @media screen and (max-width: 800px) {
-        text-transform: lowercase;
-        font-size: 16px;
+        // text-transform: lowercase;
+        font-size: 12px;
         // font-weight: 600;
       }
     }
     .menu {
       margin-left: 15px;
       font-size: 1.5rem;
+      cursor: pointer;
     }
   }
   .modal {
@@ -121,7 +125,7 @@
     .modalContent {
       background-color: #fffdd0;
       background-color: #fcfbf4;
-      width: 80%;
+      width: 40%;
       height: 100vh;
       justify-content: center;
       position: relative;
@@ -137,10 +141,16 @@
         }
       }
 
+      @media screen and (max-width: 920px) {
+        width: 65%;
+      }
+
       .menu {
         position: absolute;
         top: 2rem;
         right: 1rem;
+        font-weight: bold;
+        cursor: pointer;
       }
 
       .modalLogo {
@@ -151,7 +161,7 @@
         padding-bottom: 4rem;
         h1 {
           font-size: 20px;
-          font-weight: 600;
+          font-weight: 700;
           margin-top: 1rem;
         }
       }
@@ -162,9 +172,12 @@
       }
       h2 {
         font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 3rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
         text-align: center;
+        &:hover {
+          color: rgb(82, 80, 80);
+        }
       }
     }
   }

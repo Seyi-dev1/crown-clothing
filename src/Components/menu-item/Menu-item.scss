@@ -1,6 +1,6 @@
 .menu-item {
   min-width: 30%;
-  height: 35rem;
+  height: 29rem;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
   .content {
     // height: 90px;
     position: absolute;
-    width: 12rem;
+    width: 10rem;
     padding: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -42,8 +42,8 @@
 
     .title {
       font-weight: 400;
-      font-size: 1.6rem;
-      color: #181717;
+      font-size: 1.2rem;
+      color: #0a0a0a;
       @media screen and (max-width: 800px) {
         font-size: 15px;
         font-weight: 500;

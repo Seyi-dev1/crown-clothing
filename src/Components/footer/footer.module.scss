@@ -12,13 +12,13 @@
     .title {
       font-weight: 500;
       letter-spacing: 1px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       @media screen and (max-width: 1050px) {
         font-size: 15px;
       }
     }
     .text {
-      font-size: 15px;
+      font-size: 12px;
       margin-top: 0.5rem;
       @media screen and (max-width: 1050px) {
         font-size: 13px;
@@ -41,7 +41,7 @@
       gap: 2rem;
       justify-content: center;
       margin-top: 3rem;
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
   }
   .second {
@@ -55,6 +55,7 @@
     .logoImage {
       justify-self: center;
       margin-top: 6rem;
+      width: 2.5rem;
 
       @media screen and (max-width: 1050px) {
         width: 35px;
@@ -62,7 +63,7 @@
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 1.1rem;
       width: fit-content;
       margin-top: 1rem;
       justify-self: center;
@@ -76,7 +77,7 @@
 
     .location {
       font-weight: 500;
-      font-size: 1.3rem;
+      font-size: 0.8rem;
       letter-spacing: 12px;
       margin-top: 10px;
 
@@ -91,7 +92,7 @@
       margin-top: 3rem;
       font-weight: 600;
       color: rgb(121, 119, 119);
-      font-size: 16px;
+      font-size: 13px;
       @media screen and (max-width: 1050px) {
         font-size: 13px;
         display: grid;
@@ -105,7 +106,7 @@
       margin-top: 1rem;
       font-weight: 600;
       color: rgb(121, 119, 119);
-      font-size: 16px;
+      font-size: 13px;
       @media screen and (max-width: 1050px) {
         display: none;
       }
@@ -118,7 +119,7 @@
       margin-top: 1rem;
       font-weight: 600;
       color: rgb(121, 119, 119);
-      font-size: 16px;
+      font-size: 13px;
       @media screen and (max-width: 1050px) {
         display: none;
       }
@@ -129,7 +130,7 @@
       width: 100%;
       padding: 20px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }

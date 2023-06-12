@@ -1,11 +1,11 @@
 .custom-button {
   min-width: 165px;
   width: auto;
-  height: 48px;
+  height: 38px;
   letter-spacing: 0.5px;
-  line-height: 50px;
+  line-height: 40px;
   padding: 0 25px;
-  font-size: 15px;
+  font-size: 10px;
   background-color: black;
   color: white;
   text-transform: uppercase;
@@ -43,7 +43,7 @@
     color: black;
 
     &:hover {
-      background-color: rgb(235, 131, 33);
+      background-color: rgb(236, 161, 90);
       color: #fff;
       border: none;
     }

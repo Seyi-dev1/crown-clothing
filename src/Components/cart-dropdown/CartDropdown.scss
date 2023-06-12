@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  font-size: 13px;
   box-shadow: 2px 5px 12px rgba(0, 0, 0, 0.4);
   background-color: white;
   top: 90px;
@@ -21,7 +22,7 @@
   }
 
   ::-webkit-scrollbar {
-    width: 1vw;
+    width: 0.3vw;
     @media screen and (max-width: 800px) {
       width: 0.5vw;
     }
