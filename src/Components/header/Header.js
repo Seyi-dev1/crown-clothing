@@ -10,6 +10,9 @@ import { startSignOut } from "../../redux/user/userReducer";
 import { selectCartVisibility } from "../../redux/cart/cartSelectors";
 import { BiMenu } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdLogout } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 import React from "react";
 // import crown2 from "../../assets/crown/icons8-crown-40.png";
 
@@ -17,9 +20,13 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [isMenu, setIsMenu] = React.useState(false);
+  const [logout, setLogout] = React.useState(false);
 
   const menuToggle = () => {
     setIsMenu((prev) => !prev);
+  };
+  const toggleLogout = () => {
+    setLogout((prev) => !prev);
   };
 
   const userSelector = createSelector(
@@ -28,7 +35,14 @@ const Header = () => {
   );
 
   const user = useSelector((state) => userSelector(state));
-
+  const getLetter = () => {
+    let letter;
+    if (user) {
+      const { email } = user;
+      letter = email.charAt(0).toUpperCase();
+    }
+    return letter;
+  };
   const cartVisibilitySelector = createSelector(
     [selectCartVisibility],
     (isVisible) => isVisible
@@ -54,16 +68,18 @@ const Header = () => {
         </div>
       </div>
       <div className="options">
+        <CartIcon />
         {user ? (
-          <div className="option" onClick={() => dispatch(startSignOut())}>
-            SIGN OUT
+          <div className="option" onClick={toggleLogout}>
+            <div className="name">
+              <p>{getLetter()}</p>
+            </div>
           </div>
         ) : (
           <Link className="option" to="signin">
-            SIGN IN
+            <AiOutlineUser />
           </Link>
         )}
-        <CartIcon />
         <BiMenu onClick={menuToggle} className="menu" />
       </div>
       {cartVisibility && <CartDropdown />}
@@ -89,6 +105,24 @@ const Header = () => {
             </Link>
             <Link onClick={menuToggle} to="/shop/sneakers">
               <h2>Sneakers</h2>
+            </Link>
+          </div>
+        </div>
+      )}
+      {logout && (
+        <div className="logout">
+          <div className="content">
+            <p
+              onClick={() => {
+                dispatch(startSignOut());
+                toggleLogout();
+              }}
+            >
+              <span>Sign Out</span> <MdLogout className="out" />
+            </p>
+            <div className="line"></div>
+            <Link className="home" to={"/"} onClick={toggleLogout}>
+              <span>Home</span> <AiOutlineHome className="house" />
             </Link>
           </div>
         </div>
