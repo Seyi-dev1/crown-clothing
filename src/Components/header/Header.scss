@@ -111,7 +111,7 @@
       .name {
         color: #fff;
         background-color: #407c87;
-        background-color: #89687d;
+        // background-color: #89687d;
         border-radius: 50%;
         height: 30px;
         width: 30px;
@@ -120,7 +120,7 @@
         align-items: center;
         p {
           font-size: 1.2rem;
-          font-weight: 400;
+          font-weight: 600;
           @media screen and (max-width: 450px) {
             font-size: 1rem;
           }
