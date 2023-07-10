@@ -43,6 +43,22 @@ const Header = () => {
     }
     return letter;
   };
+  const getName = () => {
+    let fullName;
+    if (user) {
+      const { name } = user;
+      fullName = name;
+    }
+    return fullName;
+  };
+  const getEmail = () => {
+    let mail;
+    if (user) {
+      const { email } = user;
+      mail = email;
+    }
+    return mail;
+  };
   const cartVisibilitySelector = createSelector(
     [selectCartVisibility],
     (isVisible) => isVisible
@@ -111,19 +127,46 @@ const Header = () => {
       )}
       {logout && (
         <div className="logout">
-          <div className="content">
-            <p
+          <div className="user">
+            <div className="name">
+              <p>{getName()}</p>
+            </div>
+            <div className="email">
+              <p>{getEmail()}</p>
+            </div>
+          </div>
+          <div className="line"></div>
+          <div className="links">
+            <Link className="home" to={"/"} onClick={toggleLogout}>
+              <span>Home</span>
+            </Link>
+
+            <Link className="men" to={"/shop/hats"} onClick={toggleLogout}>
+              <span>Hats</span>
+            </Link>
+
+            <Link className="home" to={"/shop/mens"} onClick={toggleLogout}>
+              <span>Men</span>
+            </Link>
+
+            <Link className="home" to={"/shop/womens"} onClick={toggleLogout}>
+              <span>Women</span>
+            </Link>
+
+            <Link className="home" to={"/shop/sneakers"} onClick={toggleLogout}>
+              <span>Sneakers</span>
+            </Link>
+            <div
+              className="link"
               onClick={() => {
                 dispatch(startSignOut());
                 toggleLogout();
               }}
             >
-              <span>Sign Out</span> <MdLogout className="out" />
-            </p>
-            <div className="line"></div>
-            <Link className="home" to={"/"} onClick={toggleLogout}>
-              <span>Home</span> <AiOutlineHome className="house" />
-            </Link>
+              <p className="signout">
+                <span>Sign Out</span>
+              </p>
+            </div>
           </div>
         </div>
       )}

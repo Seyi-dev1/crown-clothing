@@ -214,37 +214,51 @@
     position: absolute;
     top: 4rem;
     right: 2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.26);
+    width: auto;
+    // padding: 1rem;
     @media screen and (max-width: 920px) {
       top: 3rem;
       right: 1rem;
     }
-    .content {
-      background-color: #fff;
-      font-size: 0.8rem;
-      width: 7rem;
-      padding: 10px 15px;
-      border-radius: 6px;
+    .user {
       display: grid;
-      justify-content: center;
-      gap: 5px;
-      p {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        .out {
-          font-size: 1.1rem;
+      padding: 1rem;
+      padding-bottom: 0.8rem;
+      .name {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .email {
+        font-size: 0.7rem;
+        color: rgb(137, 133, 133);
+        margin-top: 0.3rem;
+      }
+    }
+    .line {
+      border-bottom: 1px dashed rgb(209, 208, 208);
+    }
+    .links {
+      padding: 1rem 0;
+      display: grid;
+      font-size: 0.8rem;
+      font-weight: 400;
+
+      a {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        &:hover {
+          background-color: rgb(212, 207, 207);
+          cursor: pointer;
         }
       }
-      .line {
-        height: 2px;
-        background-color: rgb(36, 36, 36);
-      }
-      .home {
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        .house {
-          font-size: 1.1rem;
+      .signout {
+        padding: 0.5rem 1rem;
+        &:hover {
+          background-color: rgb(212, 207, 207);
+          cursor: pointer;
         }
       }
     }
