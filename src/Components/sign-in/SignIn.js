@@ -7,9 +7,13 @@ import {
   emailSignInStart,
 } from "../../redux/user/userReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentUser } from "../../redux/user/userSelectors";
+import {
+  selectCurrentUser,
+  selectIsSigningIn,
+} from "../../redux/user/userSelectors";
 import { createSelector } from "reselect";
 import { useNavigate } from "react-router-dom";
+import LoaderButton from "../loader button/LoaderButton";
 
 const SignIn = () => {
   const [inputs, setInputs] = React.useState({
@@ -20,8 +24,13 @@ const SignIn = () => {
     [selectCurrentUser],
     (currentUser) => currentUser
   );
+  const isSigningInSelector = createSelector(
+    [selectIsSigningIn],
+    (isSigningIn) => isSigningIn
+  );
 
   const user = useSelector((state) => userSelector(state));
+  const isSigningIn = useSelector((state) => isSigningInSelector(state));
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,15 +43,6 @@ const SignIn = () => {
     event.preventDefault();
     dispatch(emailSignInStart(inputs));
   };
-
-  //    const handleSubmit2 = async ()=>{
-  //         try {
-  //             await signInWithPopup(auth, provider)
-  //             navigate(-1)
-  //         } catch (error) {
-  //             console.log(error)
-  //         }
-  //     }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -77,7 +77,11 @@ const SignIn = () => {
         />
 
         <div className="buttons">
-          <CustomButton type="submit" value="SIGN IN" />
+          {isSigningIn ? (
+            <LoaderButton />
+          ) : (
+            <CustomButton type="submit" value="SIGN IN" />
+          )}
 
           <CustomButton
             type="button"

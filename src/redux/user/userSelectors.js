@@ -1,8 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const selectUser = (state)=> state.user
+const selectUser = (state) => state.user;
 
 export const selectCurrentUser = createSelector(
-    [selectUser],
-    user=>user.currentUser
-)
+  [selectUser],
+  (user) => user.currentUser
+);
+export const selectIsSigningIn = createSelector(
+  [selectUser],
+  (user) => user.isSigningIn
+);

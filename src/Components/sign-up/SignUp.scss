@@ -8,14 +8,22 @@
 
     h2 {
       font-size: 16px;
+      @media screen and (max-width: 1050px) {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
     }
     span {
       font-size: 14px;
+      @media screen and (max-width: 1050px) {
+        font-size: 12px;
+        margin-top: 10px;
+      }
     }
   }
 
   .title {
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
   }
 }
